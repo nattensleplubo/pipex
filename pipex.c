@@ -6,7 +6,7 @@
 /*   By: ngobert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:46:29 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/08 13:51:10 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/08 16:16:52 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 int	main(int ac, char **av, char **envp)
 {
-
+	if (argc < 5)
+		ft_error("Too much args");
+	
 }
