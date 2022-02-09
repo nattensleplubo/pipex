@@ -6,11 +6,33 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:46:29 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/09 16:20:26 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/09 16:30:44 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	child1_exec(t_data *data, char *cmd)
+{
+	if (dup2(data->infile, STDIN_FILENO) == -1)
+		ft_error("dup2 failed\n");
+	if (dup2(data->fd[1], STDOUT_FILENO) == -1)
+		ft_error("dup2 failed\n");
+	close(data->fd[0]);
+	close(data->infile);
+	exec_cmd(data, cmd);
+}
+
+void	child2_exec(t_data *data, char *cmd)
+{
+	if (dup2(data->outfile, STDOUT_FILENO) == -1)
+		ft_error("dup2 failed\n");
+	if (dup2(data->fd[0], STDIN_FILENO) == -1)
+		ft_error("dup2 failed\n");
+	close(data->fd[1]);
+	close(data->outfile);
+	exec_cmd(data, cmd);
+}
 
 void	ft_pipex(t_data *data, char *cmd1, char *cmd2)
 {
