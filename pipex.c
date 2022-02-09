@@ -6,11 +6,24 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:46:29 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/09 16:30:44 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/09 18:01:49 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	exec_cmd(char *argv, t_data *data)
+{
+	char	**paths;
+	char	**cmd;
+	char	*bin;
+
+	cmd = ft_split(argv, ' ');
+	if (!cmd)
+		ft_error("Split failed\n");
+	paths = get_paths(data);
+	bin = get_bin(cmd[0], paths);
+}
 
 void	child1_exec(t_data *data, char *cmd)
 {
