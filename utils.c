@@ -6,11 +6,32 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:45:21 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/09 18:13:18 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/09 18:26:41 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+char	**get_bin(char *cmd, char **paths)
+{
+	char	*tmp;
+	char	*ret_path;
+	int		i;
+
+	tmp = NULL;
+	ret_path = NULL;
+	i = -1;
+	while (paths[++i])
+	{
+		tmp = ft_strjoin(paths[i], "/");
+		ret_path = ft_strjoin(tmp, cmd);
+		if (access(ret_path, F_OK) == 0)
+			return (ret_path);
+		free(ret_path);
+	}
+	ft_error("Command not found\n");
+	return (NULL);
+}
 
 char	*get_line(t_data *data)
 {

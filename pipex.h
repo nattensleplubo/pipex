@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:49:42 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/09 16:13:13 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/09 18:20:29 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ typedef struct s_data
 /* PROTOTYPES */
 void	ft_error(const char *str);
 t_data	get_args(int argc, char **argv, char **envp);
+char	**get_paths(t_data *data);
+char	**get_bin(char *cmd, char **paths);
 
 #endif
