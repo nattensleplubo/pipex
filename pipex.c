@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:46:29 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/09 18:01:49 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/09 18:36:59 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	exec_cmd(char *argv, t_data *data)
 		ft_error("Split failed\n");
 	paths = get_paths(data);
 	bin = get_bin(cmd[0], paths);
+	execve(bin, cmd, data->envp);
 }
 
 void	child1_exec(t_data *data, char *cmd)
@@ -33,7 +34,7 @@ void	child1_exec(t_data *data, char *cmd)
 		ft_error("dup2 failed\n");
 	close(data->fd[0]);
 	close(data->infile);
-	exec_cmd(data, cmd);
+	exec_cmd(cmd ,data);
 }
 
 void	child2_exec(t_data *data, char *cmd)
@@ -44,7 +45,7 @@ void	child2_exec(t_data *data, char *cmd)
 		ft_error("dup2 failed\n");
 	close(data->fd[1]);
 	close(data->outfile);
-	exec_cmd(data, cmd);
+	exec_cmd(cmd, data);
 }
 
 void	ft_pipex(t_data *data, char *cmd1, char *cmd2)
@@ -74,7 +75,7 @@ int	main(int argc, char **argv, char **envp)
 	{
 		data = get_args(argc, argv, envp);
 		data.infile = open(argv[1], O_RDONLY);
-		data.outfile = open(argv[4], O_TRUNC | O_CREAT | O_WRONLY);
+		data.outfile = open(argv[4], O_TRUNC | O_CREAT | O_WRONLY, 0644);
 		if (!data.infile || !data.outfile)
 			ft_error("Problem opening files\n");
 		ft_pipex(&data, argv[1], argv[2]);

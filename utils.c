@@ -6,13 +6,21 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:45:21 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/09 18:26:41 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/09 18:32:20 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	**get_bin(char *cmd, char **paths)
+void	close_and_wait(t_data *data)
+{
+	close(data->fd[0]);
+	close(data->fd[1]);
+	waitpid(data->child_1, NULL, 0);
+	waitpid(data->child_2, NULL, 0);
+}
+
+char	*get_bin(char *cmd, char **paths)
 {
 	char	*tmp;
 	char	*ret_path;
