@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 14:49:42 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/09 15:01:31 by ngobert          ###   ########.fr       */
+/*   Created: 2021/11/24 14:13:30 by ngobert           #+#    #+#             */
+/*   Updated: 2021/11/24 14:13:31 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-/* INCLUDES */
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <errno.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include "libft42/libft.h"
-
-typedef struct s_data
+t_list	*ft_lstnew(void *content)
 {
-	char	**argv;
-	char	**envp;
-	int		infile;
-	int		outfile;
-	int		ac;
-	int		fd[2];
-}			t_data;
+	t_list	*dest;
 
-
-#endif
+	dest = malloc(sizeof(t_list));
+	if (!dest)
+		return (NULL);
+	dest->next = NULL;
+	dest->content = content;
+	return (dest);
+}

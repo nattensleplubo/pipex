@@ -1,36 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 14:49:42 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/09 15:01:31 by ngobert          ###   ########.fr       */
+/*   Created: 2021/10/13 01:57:46 by ngobert           #+#    #+#             */
+/*   Updated: 2021/10/25 23:27:54 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-/* INCLUDES */
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <errno.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include "libft42/libft.h"
-
-typedef struct s_data
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char	**argv;
-	char	**envp;
-	int		infile;
-	int		outfile;
-	int		ac;
-	int		fd[2];
-}			t_data;
+	int	i;
 
-
-#endif
+	if (!dst && !src)
+		return (NULL);
+	if (dst > src)
+	{
+		i = (int)len - 1;
+		while (i >= 0)
+		{
+			*(char *)(dst + i) = *(char *)(src + i);
+			i--;
+		}
+	}
+	else
+	{
+		i = 0;
+		while (i < (int)len)
+		{
+			*(char *)(dst + i) = *(char *)(src + i);
+			i++;
+		}
+	}
+	return (dst);
+}

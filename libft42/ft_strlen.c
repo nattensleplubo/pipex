@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 14:49:42 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/09 15:01:31 by ngobert          ###   ########.fr       */
+/*   Created: 2021/10/09 19:50:42 by ngobert           #+#    #+#             */
+/*   Updated: 2021/10/09 22:28:09 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-/* INCLUDES */
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <errno.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include "libft42/libft.h"
-
-typedef struct s_data
+size_t	ft_strlen(const char *s)
 {
-	char	**argv;
-	char	**envp;
-	int		infile;
-	int		outfile;
-	int		ac;
-	int		fd[2];
-}			t_data;
+	int	i;
 
-
-#endif
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}

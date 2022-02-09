@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 14:49:42 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/09 15:01:31 by ngobert          ###   ########.fr       */
+/*   Created: 2021/08/12 15:24:11 by ngobert           #+#    #+#             */
+/*   Updated: 2021/11/15 18:47:52 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-/* INCLUDES */
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <errno.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include "libft42/libft.h"
-
-typedef struct s_data
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	char	**argv;
-	char	**envp;
-	int		infile;
-	int		outfile;
-	int		ac;
-	int		fd[2];
-}			t_data;
+	unsigned int	i;
 
-
-#endif
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (s1[i] && s2[i] && (s1[i] == s2[i]) && (i < n))
+		i++;
+	if (i < n)
+		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	else
+		return (0);
+}

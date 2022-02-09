@@ -1,36 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 14:49:42 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/09 15:01:31 by ngobert          ###   ########.fr       */
+/*   Created: 2021/09/25 19:29:21 by ngobert           #+#    #+#             */
+/*   Updated: 2021/09/26 13:01:38 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-/* INCLUDES */
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <errno.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include "libft42/libft.h"
-
-typedef struct s_data
+void	ft_putchar_fd(char c, int fd)
 {
-	char	**argv;
-	char	**envp;
-	int		infile;
-	int		outfile;
-	int		ac;
-	int		fd[2];
-}			t_data;
-
-
-#endif
+	write(fd, &c, sizeof(c));
+}

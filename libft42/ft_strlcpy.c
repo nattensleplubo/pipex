@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 14:49:42 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/09 15:01:31 by ngobert          ###   ########.fr       */
+/*   Created: 2021/10/06 17:52:47 by ngobert           #+#    #+#             */
+/*   Updated: 2021/10/06 17:53:04 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-/* INCLUDES */
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <errno.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include "libft42/libft.h"
-
-typedef struct s_data
+size_t	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	char	**argv;
-	char	**envp;
-	int		infile;
-	int		outfile;
-	int		ac;
-	int		fd[2];
-}			t_data;
+	unsigned int	i;
+	unsigned int	sizereturn;
 
-
-#endif
+	i = 0;
+	while ((src[i]) && i + 1 < size)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	if (size > 0)
+		dest[i] = '\0';
+	sizereturn = 0;
+	while (src[sizereturn])
+		sizereturn++;
+	return (sizereturn);
+}

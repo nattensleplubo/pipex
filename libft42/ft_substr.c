@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 14:49:42 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/09 15:01:31 by ngobert          ###   ########.fr       */
+/*   Created: 2021/10/09 19:20:44 by ngobert           #+#    #+#             */
+/*   Updated: 2021/11/26 13:39:03 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-/* INCLUDES */
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <errno.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include "libft42/libft.h"
-
-typedef struct s_data
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	**argv;
-	char	**envp;
-	int		infile;
-	int		outfile;
-	int		ac;
-	int		fd[2];
-}			t_data;
+	unsigned int		i;
+	size_t				j;
+	char				*dest;
 
-
-#endif
+	i = 0;
+	j = 0;
+	if (start > ft_strlen(s))
+		return (ft_strdup(""));
+	dest = malloc(sizeof(char) * len + 1);
+	if (!dest)
+		return (NULL);
+	while (i < start)
+		i++;
+	while (j < len && s[i])
+	{
+		dest[j] = s[i];
+		j++;
+		i++;
+	}
+	dest[j] = '\0';
+	return (dest);
+}
