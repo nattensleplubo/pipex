@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:46:29 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/09 18:36:59 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/09 18:44:46 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	ft_pipex(t_data *data, char *cmd1, char *cmd2)
 
 int	main(int argc, char **argv, char **envp)
 {
-	int		i;
 	t_data	data;
 	if (argc != 5)
 		ft_error("Too much args");	

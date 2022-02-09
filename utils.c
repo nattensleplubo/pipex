@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:45:21 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/09 18:32:20 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/09 18:45:00 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ char	*get_line(t_data *data)
 				return (path);
 			}
 	}
+	return (NULL);
 }
 
 char	**get_paths(t_data *data)
