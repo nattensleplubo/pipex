@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 15:24:13 by ngobert           #+#    #+#             */
-/*   Updated: 2021/11/24 17:38:36 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/09 19:32:08 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ size_t		ft_strlcpy(char *dest, char *src, unsigned int size);
 char		*ft_strdup(const char *s1);
 char		*ft_strnstr(const char *str, const char *find, size_t len);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
-char		*ft_strjoin(char const *s1, char const *s2);
+char		*ft_strjoin(char *s1, char *s2);
 char		*ft_strtrim(char const *s1, char const *set);
 void		ft_putendl_fd(char *s, int fd);
 void		ft_striteri(char *s, void (*f)(unsigned int, char*));

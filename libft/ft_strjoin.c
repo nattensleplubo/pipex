@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 19:47:08 by ngobert           #+#    #+#             */
-/*   Updated: 2021/11/25 10:48:41 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/09 19:31:04 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,30 @@ int	ft_len(char const *s)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	char	*dest;
-	int		i;
-	int		j;
+	char		*dest;
+	size_t		i;
+	size_t		j;
 
-	i = 0;
-	j = 0;
+	if (!s1)
+	{
+		s1 = malloc(1 * sizeof(char));
+		s1[0] = '\0';
+	}
+	if (!s1 || !s2)
+		return (NULL);
 	dest = malloc(sizeof(char) * ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!dest)
 		return (NULL);
-	while (s1[i])
-	{
-		dest[i] = s1[i];
-		i++;
-	}
+	i = -1;
+	j = 0;
+	if (s1)
+		while (s1[++i] != '\0')
+			dest[i] = s1[i];
 	while (s2[j])
-	{
-		dest[i] = s2[j];
-		i++;
-		j++;
-	}
-	dest[i] = '\0';
+		dest[i++] = s2[j++];
+	dest[ft_strlen(s1) + ft_strlen(s2)] = '\0';
+	free(s1);
 	return (dest);
 }

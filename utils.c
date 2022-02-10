@@ -6,11 +6,22 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:45:21 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/09 18:45:00 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/10 11:16:37 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	ft_free(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i++])
+	{
+		tab[i] = (free(tab[i]), NULL);
+	}	
+}
 
 void	close_and_wait(t_data *data)
 {
@@ -37,6 +48,7 @@ char	*get_bin(char *cmd, char **paths)
 			return (ret_path);
 		free(ret_path);
 	}
+	free(tmp);
 	ft_error("Command not found\n");
 	return (NULL);
 }
@@ -46,9 +58,9 @@ char	*get_line(t_data *data)
 	char	*path;
 	int		i;
 
-	i = 0;
+	i = -1;
 	path = NULL;
-	while (data->envp[i++])
+	while (data->envp[++i])
 	{
 			path = ft_strnstr(data->envp[i], "PATH=", ft_strlen(data->envp[i]));
 			if (path)
