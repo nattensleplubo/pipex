@@ -6,13 +6,13 @@
 #    By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/10 10:29:02 by ngobert           #+#    #+#              #
-#    Updated: 2022/02/10 10:29:27 by ngobert          ###   ########.fr        #
+#    Updated: 2022/02/10 18:49:28 by ngobert          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	pipex
 
-SRCS		=	pipex.c utils.c
+SRCS		=	pipex.c utils.c more_utils.c
 OBJS		=	$(SRCS:.c=.o);
 
 CC			=	gcc

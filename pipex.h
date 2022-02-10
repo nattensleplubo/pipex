@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:49:42 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/10 11:13:50 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/10 18:48:56 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 # define PIPEX_H
 
 /* INCLUDES */
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <errno.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include "libft/libft.h"
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <errno.h>
+# include <sys/types.h>
+# include <sys/wait.h>
+# include "libft/libft.h"
 
 /* STRUCTURE */
 typedef struct s_data
@@ -42,5 +42,6 @@ char	**get_paths(t_data *data);
 char	*get_bin(char *cmd, char **paths);
 void	close_and_wait(t_data *data);
 void	ft_free(char **tab);
+char	*get_line(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:46:29 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/10 18:02:54 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/10 18:45:09 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	child1_exec(t_data *data, char *cmd)
 		ft_error("dup2 failed\n");
 	close(data->fd[0]);
 	close(data->infile);
-	exec_cmd(cmd ,data);
+	exec_cmd(cmd, data);
 }
 
 void	child2_exec(t_data *data, char *cmd)
@@ -74,17 +74,18 @@ int	main(int argc, char **argv, char **envp)
 {
 	int		i;
 	t_data	data;
-	
+
 	i = 1;
 	if (argc < 5)
-		ft_error("Too much args");	
+		ft_error("Too much args");
 	else
 	{
 		while (++i < data.argc - 2)
 		{
 			data = get_args(argc, argv, envp);
 			data.infile = open(argv[1], O_RDONLY);
-			data.outfile = open(argv[argc - 1], O_WRONLY | O_TRUNC | O_CREAT, 0644);
+			data.outfile = open(argv[argc - 1], O_WRONLY
+					| O_TRUNC | O_CREAT, 0644);
 			if (data.infile < 0 || data.outfile < 0)
 				ft_error("Problem opening files\n");
 			ft_pipex(&data, argv[i], argv[i + 1]);
