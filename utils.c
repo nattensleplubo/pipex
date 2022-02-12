@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:45:21 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/10 18:47:06 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/12 12:45:49 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ char	*get_bin(char *cmd, char **paths)
 			return (ret_path);
 		free(ret_path);
 	}
-	free(tmp);
 	ft_error("Command not found\n");
 	return (NULL);
 }
@@ -51,7 +50,7 @@ char	*get_line(t_data *data)
 	path = NULL;
 	while (data->envp[++i])
 	{
-		path = ft_strnstr(data->envp[i], "PATH=", ft_strlen(data->envp[i]));
+		path = ft_strnstr(data->envp[i], "PATH=/", ft_strlen(data->envp[i]));
 		if (path)
 		{
 			path = ft_substr(path, 5, ft_strlen(path));
@@ -72,5 +71,5 @@ char	**get_paths(t_data *data)
 	paths = ft_split(str, ':');
 	if (!paths)
 		ft_error("Split failed\n");
-	return (free(str), paths);
+	return (paths);
 }
