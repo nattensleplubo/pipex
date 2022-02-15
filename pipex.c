@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:46:29 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/12 13:29:01 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/11 11:39:46 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,13 @@ int	main(int argc, char **argv, char **envp)
 	else
 	{
 		data = get_args(argc, argv, envp);
-		data.infile = open(argv[1], O_RDONLY);
-		data.outfile = open(argv[argc - 1], O_CREAT
-				| O_TRUNC | O_WRONLY, 0644);
-		if (data.infile < 0 || data.outfile < 0)
-			ft_error("Problem opening files\n");
 		while (++i < data.argc - 2)
 		{
+			data.infile = open(argv[1], O_RDONLY);
+			data.outfile = open(argv[argc - 1], O_CREAT
+					| O_TRUNC | O_WRONLY, 0644);
+			if (data.infile < 0 || data.outfile < 0)
+				ft_error("Problem opening files\n");
 			ft_pipex(&data, argv[i], argv[i + 1]);
 		}
 	}

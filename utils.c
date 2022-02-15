@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:45:21 by ngobert           #+#    #+#             */
-/*   Updated: 2022/02/12 12:45:49 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/02/11 10:58:58 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*get_line(t_data *data)
 	path = NULL;
 	while (data->envp[++i])
 	{
-		path = ft_strnstr(data->envp[i], "PATH=/", ft_strlen(data->envp[i]));
+		path = ft_strnstr(data->envp[i], "PATH=", ft_strlen(data->envp[i]));
 		if (path)
 		{
 			path = ft_substr(path, 5, ft_strlen(path));
